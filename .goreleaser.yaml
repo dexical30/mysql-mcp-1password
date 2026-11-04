@@ -1,0 +1,32 @@
+# Release builds for macOS only: the server relies on /usr/bin/codesign and
+# the 1Password desktop app integration.
+version: 2
+project_name: mysql-mcp-1password
+
+before:
+  hooks:
+    - go mod verify
+
+builds:
+  - id: mysql-mcp-1password
+    main: ./cmd/mysql-mcp-1password
+    binary: mysql-mcp-1password
+    env:
+      - CGO_ENABLED=0
+    goos: [darwin]
+    goarch: [arm64, amd64]
+    flags: [-trimpath]
+    ldflags:
+      - -s -w -X github.com/dexical30/mysql-mcp-1password/internal/server.Version={{ .Version }}
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+archives:
+  - formats: [tar.gz]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files: [README.md, LICENSE]
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  use: github

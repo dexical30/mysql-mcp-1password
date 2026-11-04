@@ -1,0 +1,14 @@
+{
+  "id": "fakeitemid0000000000000000",
+  "title": "mysql-prod",
+  "category": "DATABASE",
+  "fields": [
+    {"id": "database_type", "type": "MENU", "label": "type", "value": "mysql"},
+    {"id": "hostname", "type": "STRING", "label": "server", "value": "fake-db.example.internal"},
+    {"id": "port", "type": "STRING", "label": "port", "value": "3307"},
+    {"id": "database", "type": "STRING", "label": "database", "value": "fake_shop"},
+    {"id": "username", "type": "STRING", "label": "username", "value": "fake_user"},
+    {"id": "password", "type": "CONCEALED", "label": "password", "value": "fake-p@ss word"},
+    {"id": "notesPlain", "type": "STRING", "purpose": "NOTES", "label": "notesPlain"}
+  ]
+}
